@@ -18,7 +18,7 @@ When this session starts on a **Thursday**, automatically run the Munich Weekend
    - Only include events actually happening that weekend — no generic "you could visit" filler
    - Maximum 4 events per day. Quality over quantity.
 
-3. **Compose Gmail drafts** to both `joyinfant99@gmail.com` and `kanmani818@gmail.com`
+3. **Send an email** to both `joyinfant99@gmail.com` and `kanmani818@gmail.com` directly using the Gmail MCP `send_email` tool. If `send_email` is not available, fall back to `create_draft`.
 
 ### Key context
 - Child: **Aegon**, born **2 November 2021** (calculate his exact age at time of running)
@@ -132,7 +132,8 @@ If nothing needs booking, omit this section entirely.
 ---
 
 ### Fallback
-If Gmail MCP is not authorized, output the full recommendation in chat so nothing is missed.
+- If `send_email` is unavailable, use `create_draft` instead
+- If Gmail MCP is not authorized at all, output the full recommendation in chat so nothing is missed
 
 ### How to trigger manually
 Start a session any Thursday — this routine runs automatically at session start.
