@@ -1,32 +1,47 @@
 # HappyHug — Claude Code Project
 
-## Wednesday Routine: Munich Weekend Family Planner
+## Thursday Routine: Munich Weekend Family Planner
 
-When this session starts on a **Wednesday**, automatically run the Munich Weekend Planner routine:
+When this session starts on a **Thursday**, automatically run the Munich Weekend Planner routine.
 
-1. Search for Munich family/kids events happening **this coming weekend** (Saturday & Sunday)
-   - Target audience: 4-year-old child (Aegon) + wife
-   - Mix of indoor and outdoor options
-   - Include any special events, festivals, or shows for the week
-   - Include practical details: cost, location, age suitability, opening hours
+### What to do
 
-2. Compose and **send a Gmail draft** to `joyinfant99@gmail.com` with:
-   - Subject: `Weekend Munich Family Plans for Aegon — [Date] 🗓️`
-   - A formatted HTML email with:
-     - Special events this weekend
-     - Outdoor activity picks (weather dependent)
-     - Indoor backup options (rain plan)
-     - 2 family-friendly lunch spots
-     - A simple Saturday / Sunday planner table
+1. **Check the weather forecast** for Munich for the coming Saturday and Sunday
+   - Use a weather source (e.g. wetter.de, weather.com, or wetteronline.de) for Munich
+   - Note temperature, rain/sun, and wind — this determines outdoor vs indoor framing
 
-3. Use the Gmail MCP tool (`create_draft`) to create the draft. If Gmail MCP is not authorized, output the full recommendation in chat instead so nothing is missed.
+2. **Search for real events happening that specific weekend** (not generic suggestions)
+   - Look for: festivals, Schnupertags, children’s theatre, open days, special museum events, markets, farm visits, nature experiences, sports taster sessions, seasonal events
+   - Search in and around Munich — family has a car and can also take the train
+   - Range: up to ~1.5 hours from Munich by car or train is fine
+   - Sources to search: muenchen.de, muenchenmitkind.de, kindaling.de, rausgegangen.de, in-muenchen.de, muenchenticket.de, rausgegangen.de/muenchen/category/children-and-families
+   - Only include events that are actually happening that weekend — no generic “you could visit” filler
+
+3. **Compose and send Gmail drafts** to both `joyinfant99@gmail.com` and `kanmani818@gmail.com` with:
+   - Subject: `Weekend Plans for Aegon — [Saturday date] 🗓️`
+   - A formatted HTML email (see structure below)
+
+### Email structure
+
+- **Weather summary** — Saturday & Sunday forecast for Munich (temp, rain chance, overall vibe)
+- **This weekend’s real events** — specific named events with date, time, location, cost, booking needed (yes/no), and a direct link
+- **Schnupertag / taster sessions** — any activity taster days (sports, arts, music, swimming, etc.) suitable for his age
+- **Day trip / nearby options** — if something great is within 1–1.5 hrs by car or train, include it
+- **Saturday plan** — a suggested itinerary based on the actual events found + weather
+- **Sunday plan** — a suggested itinerary based on the actual events found + weather
+- **Booking reminder** — flag any events that need advance booking with a direct link
 
 ### Key context
-- Child: Aegon, 4 years old
+- Child: **Aegon**, born **2 November 2021** (calculate his current exact age at time of running)
 - Location: Munich, Germany
-- Sources to search: muenchen.de, muenchenmitkind.de, kindaling.de, rausgegangen.de
-- Email recipient: joyinfant99@gmail.com
+- Transport: car available + train accessible
+- Email recipients: `joyinfant99@gmail.com` and `kanmani818@gmail.com`
+- Do NOT include generic suggestions like “go to a park” or “visit the English Garden” unless there is a **specific event** happening there that weekend
+- All recommendations must be real, specific, and happening that weekend
+
+### Fallback
+If Gmail MCP is not authorized, output the full recommendation in chat so nothing is missed.
 
 ### How to trigger manually
-Start a session any Wednesday — this routine runs automatically at session start.
-To run outside Wednesday: say "Run the Munich weekend planner".
+Start a session any Thursday — this routine runs automatically at session start.
+To run outside Thursday: say "Run the Munich weekend planner".

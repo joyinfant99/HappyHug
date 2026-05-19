@@ -1,10 +1,10 @@
 #!/bin/bash
 set -euo pipefail
 
-# On Wednesdays, signal Claude to run the Munich Weekend Planner routine
-DAY=$(date +%u)  # 1=Mon ... 3=Wed ... 7=Sun
+# On Thursdays, signal Claude to run the Munich Weekend Planner routine
+DAY=$(date +%u)  # 1=Mon ... 4=Thu ... 7=Sun
 
-if [ "$DAY" = "3" ]; then
-  echo "Today is Wednesday — running Munich Weekend Planner for Aegon."
-  echo '{"message": "WEDNESDAY_ROUTINE: Search for Munich family weekend activities for a 4-year-old (Aegon) and his wife. Follow the Wednesday routine instructions in CLAUDE.md and create a Gmail draft to joyinfant99@gmail.com."}'
+if [ "$DAY" = "4" ]; then
+  echo "Today is Thursday — running Munich Weekend Planner for Aegon."
+  echo '{"message": "THURSDAY_ROUTINE: Follow the Thursday routine instructions in CLAUDE.md. Search for real Munich weekend events, check weather, and send Gmail drafts to joyinfant99@gmail.com and kanmani818@gmail.com."}'
 fi
