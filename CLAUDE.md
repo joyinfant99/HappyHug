@@ -25,7 +25,7 @@ curl -s -X POST https://api.resend.com/emails \
   -H "Authorization: Bearer $RESEND_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "from": "HappyHug Planner <planner@joyinfant.com>",
+    "from": "HappyHug Planner <planner@presalesbench.com>",
     "to": ["joyinfant99@gmail.com", "kanmani818@gmail.com"],
     "reply_to": "joyinfant99@gmail.com",
     "subject": "Weekend Plans for Aegon — [Saturday date] 🗓️",
