@@ -18,7 +18,34 @@ When this session starts on a **Thursday**, automatically run the Munich Weekend
    - Only include events actually happening that weekend — no generic “you could visit” filler
    - Maximum 4 events per day. Quality over quantity.
 
-3. **Compose Gmail drafts** to both `joyinfant99@gmail.com` and `kanmani818@gmail.com`
+3. **Send the email** via the Resend API. Use Python to build the JSON — do NOT use inline bash `-d '{...}'` as the HTML body breaks JSON escaping:
+
+```python
+import json, urllib.request, os
+
+html_body = """[full HTML email body]"""
+subject = "Weekend Plans for Aegon — [Saturday date] 🗓️"
+
+payload = json.dumps({
+    "from": "HappyHug Planner <planner@presalesbench.com>",
+    "to": ["joyinfant99@gmail.com", "kanmani818@gmail.com"],
+    "reply_to": "joyinfant99@gmail.com",
+    "subject": subject,
+    "html": html_body
+}).encode("utf-8")
+
+req = urllib.request.Request(
+    "https://api.resend.com/emails",
+    data=payload,
+    headers={"Authorization": f"Bearer {os.environ['RESEND_API_KEY']}", "Content-Type": "application/json"},
+    method="POST"
+)
+with urllib.request.urlopen(req) as r:
+    print("Sent:", json.loads(r.read()))
+```
+
+Save as `/tmp/send_email.py` and run with `python3 /tmp/send_email.py`.
+If the response contains `{"id":"..."}` the email was sent — **do NOT fall back to Gmail draft**.
 
 ### Key context
 - Child: **Aegon**, born **2 November 2021** (calculate his exact age at time of running)
@@ -132,7 +159,8 @@ If nothing needs booking, omit this section entirely.
 ---
 
 ### Fallback
-If Gmail MCP is not authorized, output the full recommendation in chat so nothing is missed.
+- If Resend API call fails (Python error or non-200 response), fall back to Gmail MCP `create_draft`
+- If Gmail MCP is also unavailable, output the full recommendation in chat so nothing is missed
 
 ### How to trigger manually
 Start a session any Thursday — this routine runs automatically at session start.
