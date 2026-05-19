@@ -18,7 +18,23 @@ When this session starts on a **Thursday**, automatically run the Munich Weekend
    - Only include events actually happening that weekend — no generic "you could visit" filler
    - Maximum 4 events per day. Quality over quantity.
 
-3. **Send an email** to both `joyinfant99@gmail.com` and `kanmani818@gmail.com` directly using the Gmail MCP `send_email` tool. If `send_email` is not available, fall back to `create_draft`.
+3. **Send the email** via the Resend API using curl:
+
+```bash
+curl -s -X POST https://api.resend.com/emails \
+  -H "Authorization: Bearer $RESEND_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "from": "HappyHug Planner <planner@joyinfant.com>",
+    "to": ["joyinfant99@gmail.com", "kanmani818@gmail.com"],
+    "reply_to": "joyinfant99@gmail.com",
+    "subject": "Weekend Plans for Aegon — [Saturday date] 🗓️",
+    "html": "[full HTML email body]"
+  }'
+```
+
+The `$RESEND_API_KEY` environment variable is set in the Routine environment.
+If the curl call fails, fall back to Gmail MCP `create_draft`.
 
 ### Key context
 - Child: **Aegon**, born **2 November 2021** (calculate his exact age at time of running)
@@ -132,8 +148,8 @@ If nothing needs booking, omit this section entirely.
 ---
 
 ### Fallback
-- If `send_email` is unavailable, use `create_draft` instead
-- If Gmail MCP is not authorized at all, output the full recommendation in chat so nothing is missed
+- If Resend API call fails, fall back to Gmail MCP `create_draft`
+- If Gmail MCP is also unavailable, output the full recommendation in chat so nothing is missed
 
 ### How to trigger manually
 Start a session any Thursday — this routine runs automatically at session start.
